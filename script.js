@@ -31,9 +31,11 @@ function getComputerChoice() {
 
 // getComputerChoice()
 
-// Arrow function form:
+// ************* Arrow function form:
 const getComputerChoiceArrow = () =>
-  ["Rock", "Paper", "Scissors"][Math.floor(Math.random() * 3)]
+  ["Computer: Rock", "Computer: Paper", "Computer: Scissors"][
+    Math.floor(Math.random() * 3)
+  ]
 
 console.log(getComputerChoiceArrow())
 
@@ -42,13 +44,46 @@ console.log(getComputerChoiceArrow())
 
 // 1. Create a new function named getHumanChoice
 function getHumanChoice() {
-  let userInput = window.prompt("Rock, Paper, or Scissors? ")
-  console.log(userInput)
+  let userInput = prompt("Rock, Paper, or Scissors?")
+  //   console.log(userInput)
+
+  // 2. Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
+  // - Hint: Use prompt method to get the user's input.
+  // if userInput is equal to 'Rock' then return "Rock"
+  if (userInput.toLowerCase() === "rock") {
+    // console.log("User: Rock")
+    return "User: Rock"
+  } else if (userInput.toLowerCase() === "paper") {
+    console.log("User: Paper")
+    return "User: Paper"
+  } else if (userInput.toLowerCase() === "scissors") {
+    console.log("User: Scissors")
+    return "User: Scissors"
+  } else {
+    console.log("That's not a valid choice.")
+    return "That's not a valid choice."
+  }
+}
+// 3. Test our function returns using console.log
+// console.log(getHumanChoice())
+
+// ************* Arrow function form:
+const getHumanChoiceArrow = () => {
+  let userInput = prompt("Rock, Paper, or Scissors?")
+
+  if (userInput.toLowerCase() === "rock") {
+    // console.log("User: Rock")
+    return "User: Rock"
+  } else if (userInput.toLowerCase() === "paper") {
+    // console.log("User: Paper")
+    return "User: Paper"
+  } else if (userInput.toLowerCase() === "scissors") {
+    console.log("User: Scissors")
+    return "User: Scissors"
+  } else {
+    console.log("That's not a valid choice.")
+    return "That's not a valid choice."
+  }
 }
 
-getHumanChoice()
-
-// 2. Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
-// - Hint: Use prompt method to get the user's input.
-
-// 3. Test our function returns using console.log
+console.log(getHumanChoiceArrow())
