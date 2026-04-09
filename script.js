@@ -87,3 +87,11 @@ const getHumanChoiceArrow = () => {
 }
 
 console.log(getHumanChoiceArrow())
+
+// III. Declare the players score variables
+// Our game will keep track of the players score. We will write variables to keep track of the players score.
+
+// Create 2 new variables named humanScore and computerScore in the global scope.
+// Initialize with value of 0
+let humanScore = 0
+let computerScore = 0
