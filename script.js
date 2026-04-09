@@ -89,47 +89,78 @@ function getHumanChoice() {
 
 // Create 2 new variables named humanScore and computerScore in the global scope.
 // Initialize with value of 0
-let humanScore = 0
-let computerScore = 0
 
 // IV. Write logic to play single round
 // Our game will be played round by round. We will write a function that takes the human and computer player choices as arguments, plays a single round, increments the round winner's score and logs a winner announcement.
 
 // Create new function named playRound
 // Define 2 params: humanChoice and computerChoice, use these params to take the human and computer choices as arguments.
-function playRound(humanChoice, computerChoice) {
-  // Convert both choices to lowercase so our comparisons work perfectly!
-  //   humanChoice = humanChoice.toLowerCase()
-  //   computerChoice = computerChoice.toLowerCase()
 
-  if (humanChoice === "rock" && computerChoice === "paper") {
-    console.log("You lose! Paper beats Rock")
-    computerScore++
-  } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    console.log("You lose! Scissors beats Paper!")
-    computerScore++
-  } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    console.log("You lose! Rock beats Scissors!")
-    computerScore++
-  } else if (humanChoice === "rock" && computerChoice === "scissors") {
-    console.log("You win! Rock beats Scissors!")
-    humanScore++
-  } else if (humanChoice === "paper" && computerChoice === "rock") {
-    console.log("You win! Paper beats Rock!")
-    humanScore++
-  } else if (humanChoice === "scissors" && computerChoice === "paper") {
-    console.log("You win! Scissors beats Paper!")
-    humanScore++
-  } else if (humanChoice === computerChoice) {
-    console.log("It's a tie!")
+// V. Write the logic to play the entire game
+// Our game will play 5 rounds. You will write a function named playGame that calles playRound to play 5 rounds, keeps track of the scores an declares a winner at the end.
+let humanScore = 0
+let computerScore = 0
+let rounds = 0
+// 1. Create a new function named playGame.
+function playGame() {
+  function playRound(humanChoice, computerChoice) {
+    // Convert both choices to lowercase so our comparisons work perfectly!
+    //   humanChoice = humanChoice.toLowerCase()
+    //   computerChoice = computerChoice.toLowerCase()
+
+    if (humanChoice === "rock" && computerChoice === "paper") {
+      console.log("You lose! Paper beats Rock")
+      computerScore++
+    } else if (humanChoice === "paper" && computerChoice === "scissors") {
+      console.log("You lose! Scissors beats Paper!")
+      computerScore++
+    } else if (humanChoice === "scissors" && computerChoice === "rock") {
+      console.log("You lose! Rock beats Scissors!")
+      computerScore++
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
+      console.log("You win! Rock beats Scissors!")
+      humanScore++
+    } else if (humanChoice === "paper" && computerChoice === "rock") {
+      console.log("You win! Paper beats Rock!")
+      humanScore++
+    } else if (humanChoice === "scissors" && computerChoice === "paper") {
+      console.log("You win! Scissors beats Paper!")
+      humanScore++
+    } else if (humanChoice === computerChoice) {
+      console.log("It's a tie!")
+    }
+    rounds++
+
+    if (rounds < 5) {
+      console.log(
+        `**Current score** 
+      Round: ${rounds}
+      // User: ${humanScore}    v.s.    ${computerScore} :CPU //`,
+      )
+    } else if (rounds === 5) {
+      console.log(
+        `**Final score** 
+      Round: ${rounds} !!!
+      // User: ${humanScore}    v.s.    ${computerScore} :CPU //`,
+      )
+      if (humanScore > computerScore) {
+        console.log("Congratulations you have beat the CPU!")
+      } else if (computerScore > humanScore) {
+        console.log("You have lost to the Matrix...")
+      } else {
+        console.log("Tied Game.")
+      }
+    }
   }
 
-  console.log(
-    `**Current score** User: ${humanScore} / Computer: ${computerScore}`,
-  )
+  const humanSelection = getHumanChoice()
+  const computerSelection = getComputerChoice()
+
+  playRound(humanSelection, computerSelection)
 }
 
-const humanSelection = getHumanChoice()
-const computerSelection = getComputerChoice()
-
-playRound(humanSelection, computerSelection)
+playGame()
+playGame()
+playGame()
+playGame()
+playGame()
